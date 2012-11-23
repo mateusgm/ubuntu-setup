@@ -17,7 +17,7 @@ sudo apt-get --quiet update
 
 # ppas
 
-for ppa in $(<content/ppas.lst); do
+for ppa in $(<pkgs/ppas.lst); do
   sudo add-apt-repository -y $ppa
 done 
 
@@ -25,7 +25,7 @@ sudo apt-get --quiet update
 
 # packages
 
-PKGS=$(sed 's/==.*==//g' content/packages.lst)
+PKGS=$(sed 's/==.*==//g' pkgs/packages.lst)
 sudo apt-get install -y $PKGS
 
 # ruby
@@ -33,7 +33,7 @@ sudo apt-get install -y $PKGS
 curl -L https://get.rvm.io | bash -s stable --ruby
 source ~/.rvm/scripts/rvm
 gem install bundler
-bundle install
+{ cd pkgs && bundle install; }
 
 # config
 
