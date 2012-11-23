@@ -48,7 +48,7 @@ echo "  PassengerRuby $rvm_path/wrappers/$rvm_ruby_string/ruby" >> tmp
 sudo mv tmp /etc/apache2/mods-available/passenger.load
 sudo a2enmod passenger
 
-echo "address=/localhost.com/127.0.0.1" | sudo tee -a /etc/dnsmasq.conf
+echo "address=/`hostname`/127.0.0.1" | sudo tee -a /etc/dnsmasq.conf
 echo "default-storage-engine = myisam" | sudo tee -a /etc/mysql/my.cnf
 
 sudo service apache2 restart
