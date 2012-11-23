@@ -1,0 +1,111 @@
+==essential== 
+ia32-libs
+build-essential
+openssl
+libreadline6
+libreadline6-dev
+curl
+git-core
+zlib1g
+zlib1g-dev
+libssl-dev
+libyaml-dev
+libsqlite3-dev
+sqlite3
+libxml2-dev
+libxslt-dev
+autoconf
+libc6-dev
+ncurses-dev
+automake
+libtool
+bison
+subversion
+pkg-config
+
+==codecs==
+ubuntu-restricted-extras
+non-free-codecs
+libdvdcss2
+faac
+faad
+ffmpeg ffmpeg2theora
+flac
+icedax
+id3v2
+lame
+libflac++6
+libjpeg-progs
+libmpeg3-1
+mjpegtools
+mp3gain
+mpeg2dec
+mpeg3-utils
+mpegdemux
+mpg123
+mpg321
+regionset
+sox
+uudeview
+vorbis-tools
+x264
+
+==media==
+sound-juicer
+gnome-mplayer
+vlc
+vlc-plugin-pulse
+audacity
+openshot
+kazam
+
+==files== 
+arj
+lha
+p7zip
+p7zip-full
+p7zip-rar
+rar
+unace-nonfree
+sharutils
+mpack
+cabextract
+file-roller
+
+==utils==
+ubuntu-tweak
+gnome-tweak-tool 
+gnome-sushi
+jupiter
+samba samba-common
+lo-menubar
+samsungmfp-driver samsungmfp-configurator-qt4
+unison
+
+==apps==
+bleachbit
+skype
+virtualbox
+gimp
+filezilla
+nautilus-dropbox
+google-chrome-stable
+openjdk-7-jre
+icedtea-7-plugin
+
+==dev==
+vim
+curl
+ssh
+git meld gitolite
+ant
+openjdk-7-jdk
+dnsmasq
+
+==webstack== 
+apache2 libapache2-mod-wsgi
+python python-dev python-virtualenv
+php5 php5-cli
+mysql-server libmysql-ruby libmysqlclient-dev phpmyadmin
+postgresql libpq-dev phppgadmin  
+apache2-prefork-dev libcurl4-openssl-dev libapr1-dev libaprutil1-dev
