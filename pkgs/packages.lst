@@ -101,6 +101,7 @@ git meld gitolite
 ant
 openjdk-7-jdk
 dnsmasq
+sublime-text
 
 ==webstack== 
 apache2 libapache2-mod-wsgi
