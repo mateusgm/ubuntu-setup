@@ -2,20 +2,37 @@
 
 # repositories
 
-sudo apt-get --quiet update && sudo apt-get upgrade
+sudo apt-get --quiet update && sudo apt-get upgrade -y
 
-sudo wget --output-document=/etc/apt/sources.list.d/medibuntu.list http://www.medibuntu.org/sources.list.d/$(lsb_release -cs).list && sudo apt-get --quiet update && sudo apt-get --yes --quiet --allow-unauthenticated install medibuntu-keyring',
-  'sudo apt-add-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+sudo apt-add-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
 
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | tee -a /etc/apt/sources.list.d/google.list
+# medibuntu
 
-sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E && echo "deb http://linux.dropbox.com/ubuntu/ precise main" | tee -a /etc/apt/sources.list.d/dropbox.list
+sudo wget --output-document=/etc/apt/sources.list.d/medibuntu.list http://www.medibuntu.org/sources.list.d/$(lsb_release -cs).list && sudo apt-get --quiet update && sudo apt-get --yes --quiet --allow-unauthenticated install medibuntu-keyring
 
-wget -O - http://www.bchemnet.com/suldr/suldr.gpg | sudo apt-key add - && echo "deb http://www.bchemnet.com/suldr/ debian extra" | tee -a /etc/apt/sources.list.d/bchemnet.list
+# chrome
 
-sudo apt-get --quiet update
+echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
+wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
+
+# chrome
+
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google.list
+
+# dropbox
+
+sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
+echo "deb http://linux.dropbox.com/ubuntu/ precise main" | sudo tee -a /etc/apt/sources.list.d/dropbox.list
+
+# samsung printer
+
+wget -O - http://www.bchemnet.com/suldr/suldr.gpg | sudo apt-key add -
+echo "deb http://www.bchemnet.com/suldr/ debian extra" | sudo tee -a /etc/apt/sources.list.d/bchemnet.list
 
 # ppas
+
+sudo apt-get --quiet update
 
 for ppa in $(<pkgs/ppas.lst); do
   sudo add-apt-repository -y $ppa
@@ -37,7 +54,11 @@ gem install bundler
 
 # config
 
-sudo usermod -G lp -a $USER
+sudo /usr/share/doc/libdvdread4/install-css.sh
+
+sudo adduser $USER lp
+sudo adduser $USER vboxusers
+
 sudo -u postgres createuser --superuser $USER && sudo -u postgres psql postgres -tAc "ALTER user $USER with PASSWORD '$USER'"
 passenger-install-apache2-module && sudo a2enmod passenger
 

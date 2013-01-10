@@ -26,7 +26,8 @@ pkg-config
 ==codecs==
 ubuntu-restricted-extras
 non-free-codecs
-libdvdcss2
+libdvdread4
+devede
 faac
 faad
 ffmpeg ffmpeg2theora
@@ -57,7 +58,7 @@ vlc
 vlc-plugin-pulse
 audacity
 openshot
-kazam
+shutter
 
 ==files== 
 arj
@@ -78,14 +79,13 @@ gnome-tweak-tool
 gnome-sushi
 jupiter
 samba samba-common
-lo-menubar
 samsungmfp-driver samsungmfp-configurator-qt4
 unison
 
 ==apps==
 bleachbit
 skype
-virtualbox
+virtualbox-4.2
 gimp
 filezilla
 nautilus-dropbox
