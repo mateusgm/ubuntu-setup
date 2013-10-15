@@ -1,84 +1,60 @@
 #!/usr/bin/env bash
 
-# repositories
+#FORCE=""
+FORCE="--force-yes"
 
-sudo apt-get --quiet update && sudo apt-get upgrade -y
-
-sudo apt-add-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
-
-# medibuntu
-
-sudo wget --output-document=/etc/apt/sources.list.d/medibuntu.list http://www.medibuntu.org/sources.list.d/$(lsb_release -cs).list && sudo apt-get --quiet update && sudo apt-get --yes --quiet --allow-unauthenticated install medibuntu-keyring
-
-# chrome
-
-echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
-wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
-
-# chrome
-
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google.list
-
-# dropbox
-
-sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
-echo "deb http://linux.dropbox.com/ubuntu/ precise main" | sudo tee -a /etc/apt/sources.list.d/dropbox.list
-
-# samsung printer
-
-wget -O - http://www.bchemnet.com/suldr/suldr.gpg | sudo apt-key add -
-echo "deb http://www.bchemnet.com/suldr/ debian extra" | sudo tee -a /etc/apt/sources.list.d/bchemnet.list
+sudo apt-get install python-gpgme
 
 # ppas
 
-sudo apt-get --quiet update
+if [ ! -f  tmp/ppas ]
+then
+  echo "============== PPAS ==============="
+  for ppa in $(<lists/ppas.lst); do
+    sudo add-apt-repository -y $ppa
+  done
+  touch tmp/ppas
+fi
 
-for ppa in $(<pkgs/ppas.lst); do
-  sudo add-apt-repository -y $ppa
-done 
+# repos
 
-sudo apt-get --quiet update
+if [ ! -f  tmp/repos ]
+then
+  echo "============== REPOS ==============="
+  for repo in `ls repos`; do
+    echo "=== $repo"
+    source repos/$repo
+  done 
+  touch tmp/repos
+fi
 
 # packages
 
-PKGS=$(sed 's/==.*==//g' pkgs/packages.lst)
-sudo apt-get install -y $PKGS
+if [ ! -f  tmp/update ]
+then
+  echo "============== UPDATE ==============="
+  sudo apt-get --quiet update
+  touch tmp/update
+fi
 
-# ruby
+if [ ! -f  tmp/packages ] && [ -f tmp/repos ] && [ -f tmp/ppas ]
+then
+  echo "============== PKGS ==============="
+  PKGS=$(sed 's/==.*==//g' lists/packages.lst)
+  sudo apt-get install -y $PKGS $FORCE && \
+    sudo apt-get upgrade -y && \
+    touch tmp/packages
+fi
 
-curl -L https://get.rvm.io | bash -s stable --ruby
-source ~/.rvm/scripts/rvm
-gem install bundler
-{ cd pkgs && bundle install; }
+# recipes
 
-# config
-
-sudo /usr/share/doc/libdvdread4/install-css.sh
-
-sudo adduser $USER lp
-sudo adduser $USER vboxusers
-
-sudo -u postgres createuser --superuser $USER && sudo -u postgres psql postgres -tAc "ALTER user $USER with PASSWORD '$USER'"
-passenger-install-apache2-module && sudo a2enmod passenger
-
-VERSION=$(gem list passenger | sed 's/[^0-9.]*\([0-9.]*\).*/\1/')
-echo "LoadModule passenger_module $GEM_HOME/gems/passenger-$VERSION/ext/apache2/mod_passenger.so" > tmp
-echo "  PassengerRoot $GEM_HOME/gems/passenger-$VERSION" >> tmp
-echo "  PassengerRuby $rvm_path/wrappers/$rvm_ruby_string/ruby" >> tmp
-sudo mv tmp /etc/apache2/mods-available/passenger.load
-sudo a2enmod passenger
-
-echo "address=/`hostname`/127.0.0.1" | sudo tee -a /etc/dnsmasq.conf
-echo "default-storage-engine = myisam" | sudo tee -a /etc/mysql/my.cnf
-
-sudo service apache2 restart
-sudo service dnsmasq restart
-sudo service mysql restart
-
-rm tmp
-
-sudo rm /var/www
-
-sudo ln -s ~/public/shared /var/www
+if [ ! -f tmp/recipes ] && [ -f tmp/packages ]
+then
+  echo "============== RECIPES ==============="
+  for recipe in `ls recipes`; do
+    echo "=== $recipe"
+    source recipes/$recipe
+  done 
+  touch tmp/recipes
+fi
 

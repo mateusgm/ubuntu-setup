@@ -59,10 +59,13 @@ vlc-plugin-pulse
 audacity
 openshot
 shutter
+kazam
+xbmc
+
+==games==
 
 ==files== 
 arj
-lha
 p7zip
 p7zip-full
 p7zip-rar
@@ -77,10 +80,12 @@ file-roller
 ubuntu-tweak
 gnome-tweak-tool 
 gnome-sushi
-jupiter
+nemo
 samba samba-common
-samsungmfp-driver samsungmfp-configurator-qt4
-unison
+suld-driver-4.00.39 suld-configurator-2-qt4
+cryptsetup unity-2d
+libreoffice-pdfimport
+conky-all
 
 ==apps==
 bleachbit
@@ -88,7 +93,7 @@ skype
 virtualbox-4.2
 gimp
 filezilla
-nautilus-dropbox
+dropbox
 google-chrome-stable
 openjdk-7-jre
 icedtea-7-plugin
@@ -104,9 +109,10 @@ dnsmasq
 sublime-text
 
 ==webstack== 
-apache2 libapache2-mod-wsgi
+apache2
 python python-dev python-virtualenv
 php5 php5-cli
 mysql-server libmysql-ruby libmysqlclient-dev phpmyadmin
 postgresql libpq-dev phppgadmin  
 apache2-prefork-dev libcurl4-openssl-dev libapr1-dev libaprutil1-dev
+python-software-properties
