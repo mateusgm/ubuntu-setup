@@ -25,67 +25,34 @@ pkg-config
 
 ==codecs==
 ubuntu-restricted-extras
-non-free-codecs
 libdvdread4
-devede
-faac
-faad
-ffmpeg ffmpeg2theora
-flac
-icedax
-id3v2
-lame
-libflac++6
-libjpeg-progs
-libmpeg3-1
-mjpegtools
-mp3gain
-mpeg2dec
-mpeg3-utils
-mpegdemux
-mpg123
-mpg321
-regionset
-sox
-uudeview
-vorbis-tools
-x264
+libavformat-extra-53
+libavcodec-extra-53
 
 ==media==
-sound-juicer
+sound-juicer devede
 gnome-mplayer
-vlc
-vlc-plugin-pulse
+vlc vlc-plugin-pulse
 audacity
 openshot
 shutter
 kazam
-xbmc
-
-==games==
+ffmpeg
+xfburn
 
 ==files== 
-arj
-p7zip
-p7zip-full
-p7zip-rar
-rar
-unace-nonfree
-sharutils
-mpack
-cabextract
-file-roller
+p7zip p7zip-full p7zip-rar
+nemo nemo-share nemo-pastebin
+samba samba-common
+libreoffice-pdfimport
 
 ==utils==
 ubuntu-tweak
 gnome-tweak-tool 
-gnome-sushi
-nemo
-samba samba-common
 suld-driver-4.00.39 suld-configurator-2-qt4
 cryptsetup unity-2d
-libreoffice-pdfimport
 conky-all
+tlp tlp-rdw
 
 ==apps==
 bleachbit
@@ -93,22 +60,19 @@ skype
 virtualbox-4.2
 gimp
 filezilla
-dropbox
+nemo-dropbox dropbox
 google-chrome-stable
-openjdk-7-jre
-icedtea-7-plugin
+oracle-java8-installer
 
 ==dev==
 vim
 curl
 ssh
-git meld gitolite
-ant
-openjdk-7-jdk
-dnsmasq
+git meld nemo-rabbitvcs
 sublime-text
 
 ==webstack== 
+dnsmasq
 apache2
 python python-dev python-virtualenv
 php5 php5-cli

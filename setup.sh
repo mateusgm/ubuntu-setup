@@ -4,6 +4,7 @@
 FORCE="--force-yes"
 
 sudo apt-get install python-gpgme
+mkdir tmp -f
 
 # ppas
 
@@ -37,24 +38,24 @@ then
   touch tmp/update
 fi
 
-if [ ! -f  tmp/packages ] && [ -f tmp/repos ] && [ -f tmp/ppas ]
-then
-  echo "============== PKGS ==============="
-  PKGS=$(sed 's/==.*==//g' lists/packages.lst)
-  sudo apt-get install -y $PKGS $FORCE && \
-    sudo apt-get upgrade -y && \
-    touch tmp/packages
-fi
+# if [ ! -f  tmp/packages ] && [ -f tmp/repos ] && [ -f tmp/ppas ]
+# then
+#   echo "============== PKGS ==============="
+#   PKGS=$(sed 's/==.*==//g' lists/packages.lst)
+#   sudo apt-get install -y $PKGS $FORCE && \
+#     sudo apt-get upgrade -y && \
+#     touch tmp/packages
+# fi
 
-# recipes
+# # recipes
 
-if [ ! -f tmp/recipes ] && [ -f tmp/packages ]
-then
-  echo "============== RECIPES ==============="
-  for recipe in `ls recipes`; do
-    echo "=== $recipe"
-    source recipes/$recipe
-  done 
-  touch tmp/recipes
-fi
+# if [ ! -f tmp/recipes ] && [ -f tmp/packages ]
+# then
+#   echo "============== RECIPES ==============="
+#   for recipe in `ls recipes`; do
+#     echo "=== $recipe"
+#     source recipes/$recipe
+#   done 
+#   touch tmp/recipes
+# fi
 

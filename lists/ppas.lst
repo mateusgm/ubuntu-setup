@@ -1,8 +1,8 @@
-ppa:webupd8team/jupiter
-ppa:webupd8team/sublime-text-2
-ppa:tualatrix/ppa
-ppa:chris-lea/node.js
+ppa:webupd8team/sublime-text-3
+ppa:webupd8team/nemo
+ppa:webupd8team/java
 ppa:nilarimogard/webupd8
+ppa:linrunner/tlp
+ppa:tualatrix/ppa
 ppa:kazam-team/stable-series
-ppa:gwendal-lebihan-dev/cinnamon-stable
-ppa:team-xbmc
+ppa:mozillateam/firefox-next
