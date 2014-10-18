@@ -1,43 +1,32 @@
 ==essential== 
-ia32-libs
 build-essential
 openssl
-libreadline6
-libreadline6-dev
 curl
 git-core
-zlib1g
-zlib1g-dev
-libssl-dev
-libyaml-dev
-libsqlite3-dev
-sqlite3
-libxml2-dev
-libxslt-dev
 autoconf
-libc6-dev
-ncurses-dev
 automake
-libtool
-bison
-subversion
 pkg-config
+
+==libs==
+libtool
+libreadline6 libreadline6-dev
+zlib1g zlib1g-dev
+libssl-dev libyaml-dev
+sqlite3 libsqlite3-dev
+libxml2-dev libxslt-dev
+libc6-dev ncurses-dev
 
 ==codecs==
 ubuntu-restricted-extras
 libdvdread4
-libavformat-extra-53
-libavcodec-extra-53
 
 ==media==
-sound-juicer devede
+plexhometheater
 gnome-mplayer
 vlc vlc-plugin-pulse
-audacity
-openshot
-shutter
+audacity openshot
+sound-juicer
 kazam
-ffmpeg
 xfburn
 
 ==files== 
@@ -55,21 +44,22 @@ conky-all
 tlp tlp-rdw
 
 ==apps==
-bleachbit
 skype
-virtualbox-4.2
+virtualbox-4.3
 gimp
 filezilla
-nemo-dropbox dropbox
+nemo-dropbox
 google-chrome-stable
 oracle-java8-installer
 
 ==dev==
+autojump
 vim
 curl
 ssh
 git meld nemo-rabbitvcs
 sublime-text
+zsh
 
 ==webstack== 
 dnsmasq
@@ -80,3 +70,4 @@ mysql-server libmysql-ruby libmysqlclient-dev phpmyadmin
 postgresql libpq-dev phppgadmin  
 apache2-prefork-dev libcurl4-openssl-dev libapr1-dev libaprutil1-dev
 python-software-properties
+nodejs
