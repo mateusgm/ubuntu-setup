@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # repo
+sudo apt-add-repository -y ppa:ubuntu-mate-dev/ppa
+sudo apt-add-repository -y ppa:ubuntu-mate-dev/trusty-mate
 sudo add-apt-repository -y ppa:nilarimogard/webupd8
 sudo add-apt-repository -y ppa:webupd8team/java
 sudo apt-add-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
@@ -10,13 +12,13 @@ echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc
 
 # packages
 sudo apt-get update
-sudo apt-get install -y ubuntu-restricted-extras thunderbird libdvdread4 vlc vlc-plugin-pulse p7zip p7zip-full p7zip-rar google-chrome-stable oracle-java8-installer skype mate-desktop-environment-core mate-desktop-environment-extra preload
-sudo /usr/share/doc/libdvdread4/install-css.sh
+sudo apt-get install -y ubuntu-restricted-extras thunderbird libdvdread4 vlc vlc-plugin-pulse p7zip p7zip-full p7zip-rar google-chrome-stable oracle-java8-installer skype ubuntu-mate-core ubuntu-mate-desktop preload
 sudo apt-get remove unity unity-asset-pool unity-control-center unity-control-center-signon unity-gtk-module-common unity-lens* unity-services unity-settings-daemon unity-webapps* unity-voice-service
 sudo apt-get autoremove && sudo apt-get autoclean
 sudo apt-get upgrade -y
 
 # setup
+sudo /usr/share/doc/libdvdread4/install-css.sh
 sudo sed -i 's/NoDisplay=true/NoDisplay=false/g' /etc/xdg/autostart/*.desktop
 sed -i 's/NoDisplay=true/NoDisplay=false/g' /etc/xdg/autostart/*.desktop
 sudo /usr/lib/lightdm/lightdm-set-defaults -s mate
