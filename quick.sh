@@ -9,7 +9,7 @@ wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-ke
 echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google.list
 
 # packages
-sudo apt-get upgrade -y
+sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install -y ubuntu-restricted-extras thunderbird libdvdread4 vlc vlc-plugin-pulse p7zip p7zip-full p7zip-rar google-chrome-stable oracle-java8-installer skype mate-desktop-environment-core mate-desktop-environment-extra preload
 sudo /usr/share/doc/libdvdread4/install-css.sh
 sudo apt-get remove unity unity-asset-pool unity-control-center unity-control-center-signon unity-gtk-module-common unity-lens* unity-services unity-settings-daemon unity-webapps* unity-voice-service
